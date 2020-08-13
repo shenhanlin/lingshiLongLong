@@ -41,71 +41,164 @@ var finalPriceCell = document.getElementById("finalPriceCell");
 
 
 function addItemToShoppingCar(item){
-    item.parentElement.parentElement.childNodes[4].childNodes[0].textContent++;
+    item.parentElement.parentElement.childNodes[1].childNodes[0].textContent++;
 
     var itemIsInTheCar = 0;
-
-    shoppingCar.forEach(function(element){ if(element[0] == item.parentElement.parentElement.childNodes[1].textContent){ 
+      
+    
+    shoppingCar.forEach(function(element){ if(element[1] == item.parentElement.parentElement.childNodes[3].textContent){ 
+            
         itemIsInTheCar = 1;
-        element[2]++;
+        element[0]++;
     }
                                          });
 
     if(itemIsInTheCar == 0){
-        var tempItem=[item.parentElement.parentElement.childNodes[1].textContent,
-                      item.parentElement.parentElement.childNodes[2].textContent,
-                      item.parentElement.parentElement.childNodes[4].textContent,
-                      item.parentElement.parentElement.childNodes[6].textContent,
-                      item.parentElement.parentElement.childNodes[7].textContent,
+        var tempItem=[item.parentElement.parentElement.childNodes[1].textContent, //number
+                      item.parentElement.parentElement.childNodes[3].textContent, //name
+                      item.parentElement.parentElement.childNodes[4].textContent, //price
+                      item.parentElement.parentElement.childNodes[5].textContent, //img src
+                      item.parentElement.parentElement.childNodes[6].textContent  //type
                      ];
+        
         shoppingCar.push(tempItem);
     }
 
 
 }
+
 /*  subItemFromShoppingCar  */
 function subItemFromShoppingCar(item){
 
 
     var numberOfItem;
-    numberOfItem=item.parentElement.parentElement.childNodes[4].childNodes[0].textContent;
+    numberOfItem=item.parentElement.parentElement.childNodes[1].childNodes[0].textContent;
+
+    console.log(shoppingCar);
     
     if(numberOfItem==0 || numberOfItem==1){
         for(var x=0;x < shoppingCar.length;x++){
-            if(shoppingCar[x][0] == item.parentElement.parentElement.childNodes[1].textContent){ 
+            if(shoppingCar[x][1] == item.parentElement.parentElement.childNodes[3].textContent){ 
                 numberOfItem =0;
                 shoppingCar.splice(x, 1);
                 break;
             }
         }
     }
-    
-    
+
+
     if(numberOfItem>1){
         numberOfItem--;
 
         for(var x=0;x < shoppingCar.length;x++){
-            if(shoppingCar[x][0] == item.parentElement.parentElement.childNodes[1].textContent){ 
-                shoppingCar[x][2]--;
+            if(shoppingCar[x][1] == item.parentElement.parentElement.childNodes[3].textContent){ 
+                shoppingCar[x][0]--;
                 break;
             }
         }
-        /*shoppingCar.forEach(function(element){ if(element[0] == item.parentElement.parentElement.childNodes[1].textContent){ 
-            element[2]--;
-            console.log(element[2]);
-             break
-        }});*/
 
     }
-    item.parentElement.parentElement.childNodes[4].childNodes[0].textContent = numberOfItem;
+    item.parentElement.parentElement.childNodes[1].childNodes[0].textContent = numberOfItem;
 
 }
 
 
 function initTable(){
-    /*Table A*/
 
     for(var x=0;x < listA.length;x++ ){
+
+        var row1 = tableA.insertRow(tableA.rows.length);
+        var row2 = tableA.insertRow(tableA.rows.length);
+
+
+        var cell11 = row1.insertCell(0);
+        var cell12 = row1.insertCell(1);
+        var cell13 = row1.insertCell(2);
+
+        var cell21 = row2.insertCell(0);
+        var cell22 = row2.insertCell(1);
+        var cell23 = row2.insertCell(2);
+        var cell24 = row2.insertCell(3);
+        var cell25 = row2.insertCell(4);
+        var cell26 = row2.insertCell(5);
+        var cell27 = row2.insertCell(6);
+
+
+        cell11.rowSpan = "2";
+        cell12.rowSpan = "2";
+        cell13.colSpan = "3";
+        cell13.innerHTML=listA[x][0];
+        cell13.style.borderRight = "1px solid #121d2561";
+        cell13.style.borderBottom= "none";
+
+        
+
+        var img = document.createElement('img');
+        img.style.maxHeight="70px";
+        img.style.margin="auto";
+        img.src = listA[x][2];
+        cell11.appendChild(img);
+
+        cell12.innerHTML=listA[x][1];
+
+        // addbutton
+        var addbutton = document. createElement("button");
+        addbutton. innerHTML = "+";
+        // 2. Append somewhere.
+        cell21.appendChild(addbutton);
+        cell21.style.borderRight = "none";
+        cell21.style.borderTop = "none";
+        
+        
+        addbutton.addEventListener ("click", function() {
+
+
+            addItemToShoppingCar(this);
+
+        });
+
+
+
+        //text area
+        var label = document.createElement("LABEL");
+        label.className="itemNumberDisplay";
+        label.innerHTML="0";
+        cell22.appendChild(label);
+        cell22.style.borderRight = "none";
+        cell22.style.borderLeft = "none";
+        cell22.style.borderTop = "none";
+
+        // subbutton
+        var subbutton = document. createElement("button");
+        subbutton. innerHTML = "-";
+        // 2. Append somewhere.
+        cell23.appendChild(subbutton);
+        cell23.style.borderLeft = "none";
+        cell23.style.borderRight = "1px solid #121d2561";
+        cell23.style.borderTop = "none";
+
+        subbutton.addEventListener ("click", function() {
+            subItemFromShoppingCar(this);
+        });
+
+        cell24.innerHTML=listA[x][0];
+        cell24.style.display= "none";
+
+        cell25.innerHTML=listA[x][1];
+        cell25.style.display= "none";
+        
+        cell26.innerHTML=listA[x][2];
+        cell26.style.display= "none";
+        
+        cell27.innerHTML=listA[x][3];
+        cell27.style.display= "none";
+    }
+
+
+
+    /*Table A*/
+
+    /*for(var x=0;x < listA.length;x++ ){
         var row = tableA.insertRow(tableA.rows.length);
         var cell1 = row.insertCell(0);
         var cell2 = row.insertCell(1);
@@ -164,7 +257,7 @@ function initTable(){
         cell8.innerHTML=listA[x][3];
         cell8.style.display= "none";
 
-    }
+    }*/
 
 
 
@@ -173,6 +266,8 @@ function initTable(){
 
 
     /*Table B*/
+
+
     /*Table C*/
     /*Table D*/
     /*Table E*/
@@ -180,27 +275,27 @@ function initTable(){
 }
 
 function initShoppingCarTable(){
-    
+
     //init the fianl price
     finalPrice = 0;
-    
+
     if(inShoppingCarPage ==0){
-        shoppingCarButton.innerHTML ="返回";
+        shoppingCarButton.innerHTML ="继续购物";
         inShoppingCarPage =1;
     }else{
-        shoppingCarButton.innerHTML ="结账";
+        shoppingCarButton.innerHTML ="去结算";
         inShoppingCarPage =0;
     }
-    
-     
+
+
     for(var y=shoppingCarTable.rows.length-1; y > 0;y-- ){
 
         shoppingCarTable.deleteRow(y);
     }
-    
-    
-    
-    
+
+
+
+
     for(var x=0;x < shoppingCar.length;x++ ){
         var row = shoppingCarTable.insertRow(shoppingCarTable.rows.length);
         var cell1 = row.insertCell(0);
@@ -219,11 +314,11 @@ function initShoppingCarTable(){
         cell2.innerHTML=shoppingCar[x][0];
         cell3.innerHTML=shoppingCar[x][1];
         cell4.innerHTML=shoppingCar[x][2];
-             
-        finalPrice = finalPrice+(parseInt(shoppingCar[x][1].slice(1, shoppingCar[x][1].length)) * parseInt(shoppingCar[x][2]));
-        
+
+        finalPrice = finalPrice+(parseInt(shoppingCar[x][2].slice(1, shoppingCar[x][1].length)) * parseInt(shoppingCar[x][0]));
+
     }
-    
+
     if (shoppingCarTableDiv.style.display == "none") {
         shoppingCarTableDiv.style.display = "block";
         maintable.style.display = "none";
@@ -237,18 +332,18 @@ function initShoppingCarTable(){
         maintable.style.display = "block";
         tableADiv.style.display = "block";
     }
-    
+
     finalPriceCell.innerHTML = finalPrice;
-  
+
 } 
 
 function getFinalPrice(){
     console.log(shoppingCar);
-    
+
 }
 
 function creatFinalList(){
-    
+
 }
 
 
@@ -319,7 +414,7 @@ function showtableC() {
         tableADiv.style.display = "none";
         tableDDiv.style.display = "none";
         tableEDiv.style.display = "none";
-        
+
     } else{
         tableBDiv.style.display = "none";
         tableADiv.style.display = "none";

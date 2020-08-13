@@ -8,7 +8,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
     <head>
         <title>Stellar by HTML5 UP</title>
         <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
         <link rel="stylesheet" href="assets/css/main.css" />
         <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 
@@ -16,13 +16,18 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 
     </head>
     <body onload="initTable()">
+        <div id="bodyWarrper">
         <table id="maintable" cellspacing= 0 class="maintable">
             <tr style="height: 50px;">
-                <td id="muneA"><button class="buttonClass" onclick="showtableA()">干果</button></td>
-                <td id="muneB"><button class="buttonClass" onclick="showtableB()">肉类</button></td>
-                <td id="muneC"><button class="buttonClass" onclick="showtableC()">饮料</button></td>
-                <td id="muneD"><button class="buttonClass" onclick="showtableD()">卤味</button></td>
-                <td id="muneE" style="border-right: 1px solid black;"><button class="buttonClass" onclick="showtableE()">膨化食品</button></td>
+                <td id="muneA"><button class="buttonClass" onclick="showtableA()"><div style="writing-mode:vertical-lr;white-space: pre;padding-left: 8px;
+    margin-right: -6px;">干果</div></button></td>
+                <td id="muneB"><button class="buttonClass" onclick="showtableB()"><div style="writing-mode:vertical-lr;white-space: pre;padding-left: 8px;
+    margin-right: -6px;">肉类</div></button></td>
+                <td id="muneC"><button class="buttonClass" onclick="showtableC()"><div style="writing-mode:vertical-lr;white-space: pre;padding-left: 8px;
+    margin-right: -6px;">饮料</div></button></td>
+                <td id="muneD"><button class="buttonClass" onclick="showtableD()"><div style="writing-mode:vertical-lr;white-space: pre;padding-left: 8px;
+    margin-right: -6px;">卤味</div></button></td>
+                <td id="muneE" style="border-right: 1px solid black; width: 17%;"><button class="buttonClass" onclick="showtableE()">膨化<br>食品</button></td>
             </tr>
         </table>
 
@@ -84,6 +89,11 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
             </table>
 
         </div>
+            
+        </div>    
+            
+            
+            
         <div class="footCover">
         </div>
 
@@ -116,7 +126,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
         </div>
 
 
-        <button  id="shoppingCarButton" class="shoppingCarButton" onclick="initShoppingCarTable()">结账</button>
+        <button  id="shoppingCarButton" class="shoppingCarButton" onclick="initShoppingCarTable()">去结算</button>
 
         <script src="assets/js/main.js"></script>
     </body>
