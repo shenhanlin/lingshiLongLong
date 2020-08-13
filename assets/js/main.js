@@ -22,7 +22,7 @@ var muneE = document.getElementById("muneE");
 
 
 /*  list= [[item1[name, price,imgsrc,type],item2,item3]   */
-var listA = [["苹果",'$2','/images/A/苹果.jpg',"A"], ["梨",'$1','/images/A/梨.jpg',"A"], ["香蕉",'$3','/images/A/香蕉.jpg',"A"]];
+var listA = [["苹果",'$2','//images/A/苹果.jpg',"A"], ["梨",'$1','../images/A/梨.jpg',"A"], ["香蕉",'$3','/images/A/香蕉.jpg',"A"]];
 var listB = ["梨", "Volvo", "BMW"];
 var listC = ["Saab", "Volvo", "BMW"];
 var listD = ["Saab", "Volvo", "BMW"];
