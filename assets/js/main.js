@@ -22,7 +22,7 @@ var muneE = document.getElementById("muneE");
 
 
 /*  list= [[item1[name, price,imgsrc,type],item2,item3]   */
-var listA = [["苹果",'$2','./images/A/苹果.jpg',"A"], ["梨",'$1','./images/A/梨.jpg',"A"], ["香蕉",'$3','./images/A/香蕉.jpg',"A"]];
+var listA = [["苹果",'$2','./images/A/苹果.jpg',"A"], ["梨",'$1','./images/A/梨.jpg',"A"], ["香蕉",'$3','./images/A/香蕉.jpg',"A"], ["香蕉",'$3','./images/A/香蕉.jpg',"A"], ["香蕉",'$3','./images/A/香蕉.jpg',"A"], ["香蕉1",'$3','./images/A/香蕉.jpg',"A"], ["香蕉5",'$3','./images/A/香蕉.jpg',"A"], ["香蕉9",'$3','./images/A/香蕉.jpg',"A"], ["香蕉",'$3','./images/A/香蕉.jpg',"A"], ["香蕉2",'$3','./images/A/香蕉.jpg',"A"], ["香蕉6",'$3','./images/A/香蕉.jpg',"A"], ["香蕉10",'$3','./images/A/香蕉.jpg',"A"], ["香蕉",'$3','./images/A/香蕉.jpg',"A"], ["香蕉3",'$3','./images/A/香蕉.jpg',"A"], ["香蕉7",'$3','./images/A/香蕉.jpg',"A"], ["香蕉11",'$3','./images/A/香蕉.jpg',"A"], ["香蕉",'$3','./images/A/香蕉.jpg',"A"], ["香蕉4",'$3','./images/A/香蕉.jpg',"A"], ["香蕉8",'$3','./images/A/香蕉.jpg',"A"]];
 var listB = ["梨", "Volvo", "BMW"];
 var listC = ["Saab", "Volvo", "BMW"];
 var listD = ["Saab", "Volvo", "BMW"];
@@ -304,7 +304,6 @@ function showtableB() {
     }
 }
 
-
 function showtableC() {
 
     muneA.style.backgroundColor ="lightgray";
@@ -320,6 +319,7 @@ function showtableC() {
         tableADiv.style.display = "none";
         tableDDiv.style.display = "none";
         tableEDiv.style.display = "none";
+        
     } else{
         tableBDiv.style.display = "none";
         tableADiv.style.display = "none";
