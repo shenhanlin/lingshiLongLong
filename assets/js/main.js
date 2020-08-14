@@ -22,11 +22,16 @@ var muneE = document.getElementById("muneE");
 
 
 /*  list= [[item1[name, price,imgsrc,type],item2,item3]   */
-var listA = [["苹果",'$2','./images/A/苹果.jpg',"A"], ["梨",'$1','./images/A/梨.jpg',"A"], ["香蕉",'$3','./images/A/香蕉.jpg',"A"], ["香蕉",'$3','./images/A/香蕉.jpg',"A"], ["香蕉",'$3','./images/A/香蕉.jpg',"A"], ["香蕉1",'$3','./images/A/香蕉.jpg',"A"], ["香蕉5",'$3','./images/A/香蕉.jpg',"A"], ["香蕉9",'$3','./images/A/香蕉.jpg',"A"], ["香蕉",'$3','./images/A/香蕉.jpg',"A"], ["香蕉2",'$3','./images/A/香蕉.jpg',"A"], ["香蕉6",'$3','./images/A/香蕉.jpg',"A"], ["香蕉10",'$3','./images/A/香蕉.jpg',"A"], ["香蕉",'$3','./images/A/香蕉.jpg',"A"], ["香蕉3",'$3','./images/A/香蕉.jpg',"A"], ["香蕉7",'$3','./images/A/香蕉.jpg',"A"], ["香蕉11",'$3','./images/A/香蕉.jpg',"A"], ["香蕉",'$3','./images/A/香蕉.jpg',"A"], ["香蕉4",'$3','./images/A/香蕉.jpg',"A"], ["香蕉8",'$3','./images/A/香蕉.jpg',"A"]];
-var listB = ["梨", "Volvo", "BMW"];
-var listC = ["Saab", "Volvo", "BMW"];
-var listD = ["Saab", "Volvo", "BMW"];
-var listE = ["Saab", "Volvo", "BMW"];
+var listA = [["老街口瓜子",'$2','./images/A/老街口瓜子.jpg',"A"], ["蟹黄味瓜子仁",'$5','./images/A/蟹黄味瓜子仁.jpg',"A"]];
+
+
+
+var listB = [["冰红茶",'$2','./images/B/冰红茶.png',"B"], ["加多宝",'$5','./images/B/加多宝.png',"B"], ["喜之郎CiCi葡萄味",'$3','./images/B/喜之郎CiCi葡萄味.png',"B"], ["康师傅绿茶",'$3','./images/B/康师傅绿茶.png',"B"]];
+
+
+var listC = [];
+var listD = [];
+var listE = [];
 
 var shoppingCar =[];
 var shoppingCarTable = document.getElementById("shoppingCarTable");
@@ -38,16 +43,20 @@ var shoppingCarButton = document.getElementById("shoppingCarButton");
 var finalPrice = 0;
 var finalPriceCell = document.getElementById("finalPriceCell");
 
+var infinalList =0;
+
+var purchaseOrderTable = document.getElementById("purchaseOrderTable");
+
 
 
 function addItemToShoppingCar(item){
     item.parentElement.parentElement.childNodes[1].childNodes[0].textContent++;
 
     var itemIsInTheCar = 0;
-      
-    
+
+
     shoppingCar.forEach(function(element){ if(element[1] == item.parentElement.parentElement.childNodes[3].textContent){ 
-            
+
         itemIsInTheCar = 1;
         element[0]++;
     }
@@ -60,7 +69,7 @@ function addItemToShoppingCar(item){
                       item.parentElement.parentElement.childNodes[5].textContent, //img src
                       item.parentElement.parentElement.childNodes[6].textContent  //type
                      ];
-        
+
         shoppingCar.push(tempItem);
     }
 
@@ -75,7 +84,7 @@ function subItemFromShoppingCar(item){
     numberOfItem=item.parentElement.parentElement.childNodes[1].childNodes[0].textContent;
 
     console.log(shoppingCar);
-    
+
     if(numberOfItem==0 || numberOfItem==1){
         for(var x=0;x < shoppingCar.length;x++){
             if(shoppingCar[x][1] == item.parentElement.parentElement.childNodes[3].textContent){ 
@@ -103,7 +112,7 @@ function subItemFromShoppingCar(item){
 }
 
 
-function initTable(){
+function initTable(listA,tableA){
 
     for(var x=0;x < listA.length;x++ ){
 
@@ -131,13 +140,15 @@ function initTable(){
         cell13.style.borderRight = "1px solid #121d2561";
         cell13.style.borderBottom= "none";
 
-        
+
 
         var img = document.createElement('img');
         img.style.maxHeight="70px";
         img.style.margin="auto";
         img.src = listA[x][2];
+        img.setAttribute('onclick','showBigImageCover(this)');
         cell11.appendChild(img);
+         
 
         cell12.innerHTML=listA[x][1];
 
@@ -148,11 +159,9 @@ function initTable(){
         cell21.appendChild(addbutton);
         cell21.style.borderRight = "none";
         cell21.style.borderTop = "none";
-        
-        
+
+
         addbutton.addEventListener ("click", function() {
-
-
             addItemToShoppingCar(this);
 
         });
@@ -186,10 +195,10 @@ function initTable(){
 
         cell25.innerHTML=listA[x][1];
         cell25.style.display= "none";
-        
+
         cell26.innerHTML=listA[x][2];
         cell26.style.display= "none";
-        
+
         cell27.innerHTML=listA[x][3];
         cell27.style.display= "none";
     }
@@ -274,17 +283,38 @@ function initTable(){
 
 }
 
+function initAllTable(){
+    showtableA();
+    initTable(listA,tableA);
+    initTable(listB,tableB);
+    initTable(listC,tableC);
+    initTable(listD,tableD);
+    initTable(listE,tableE);
+}
+
 function initShoppingCarTable(){
 
     //init the fianl price
     finalPrice = 0;
 
-    if(inShoppingCarPage ==0){
+    if(inShoppingCarPage ==0 &&infinalList ==0){
         shoppingCarButton.innerHTML ="继续购物";
         inShoppingCarPage =1;
-    }else{
+    }else if(inShoppingCarPage ==1 &&infinalList ==0){
         shoppingCarButton.innerHTML ="去结算";
         inShoppingCarPage =0;
+    }
+
+    if(infinalList == 1){
+        shoppingCarButton.innerHTML ="去结算";
+        shoppingCarButton.className="shoppingCarButton";
+        inShoppingCarPage=0;
+        infinalList =0;
+        showtableA();
+        document.getElementById("footCover").style.display = "block";
+        shoppingCarTableDiv.style.display = "block";
+        purchaseOrderDiv.style.display = "none";
+
     }
 
 
@@ -309,13 +339,16 @@ function initShoppingCarTable(){
         img.style.maxHeight="70px";
         img.style.margin="auto"; 
         img.src = shoppingCar[x][3];
-        cell1.appendChild(img);
+        cell1.appendChild(img);           
 
-        cell2.innerHTML=shoppingCar[x][0];
-        cell3.innerHTML=shoppingCar[x][1];
-        cell4.innerHTML=shoppingCar[x][2];
+        cell2.innerHTML=shoppingCar[x][1];
+        cell3.innerHTML=shoppingCar[x][2];
+        cell4.innerHTML=shoppingCar[x][0];
 
-        finalPrice = finalPrice+(parseInt(shoppingCar[x][2].slice(1, shoppingCar[x][1].length)) * parseInt(shoppingCar[x][0]));
+        console.log(shoppingCar[x]);
+
+
+        finalPrice = finalPrice+(parseInt(shoppingCar[x][2].slice(1, shoppingCar[x][2].length)) * parseInt(shoppingCar[x][0]));
 
     }
 
@@ -333,16 +366,78 @@ function initShoppingCarTable(){
         tableADiv.style.display = "block";
     }
 
+    console.log(finalPrice);
     finalPriceCell.innerHTML = finalPrice;
 
 } 
+
 
 function getFinalPrice(){
     console.log(shoppingCar);
 
 }
 
-function creatFinalList(){
+function minshoppingCarButton() {
+    shoppingCarButton=document.getElementById("shoppingCarButton");
+    shoppingCarButton.className="shoppingCarButtonMin";
+    shoppingCarButton.innerHTML="&#8592";
+}
+
+
+
+function creatFinalList() {
+    infinalList = 1;
+    purchaseOrderDiv.style.display = "block";
+    tableEDiv.style.display = "none";
+    tableBDiv.style.display = "none";
+    tableCDiv.style.display = "none";
+    tableDDiv.style.display = "none";
+    tableADiv.style.display = "none";
+    document.getElementById("footCover").style.display = "none";
+    shoppingCarTableDiv.style.display = "none";
+    minshoppingCarButton();
+
+    for(var y=purchaseOrderTable.rows.length-1; y >= 0;y-- ){
+
+        purchaseOrderTable.deleteRow(y);
+    }
+
+
+    for(var x=0;x < shoppingCar.length;x++ ){
+        
+
+        
+        
+        var row = purchaseOrderTable.insertRow(purchaseOrderTable.rows.length);
+        
+        if(shoppingCar.length - x == 1){
+            var cell1 = row.insertCell(0);
+            var cell2 = row.insertCell(1);
+        }
+        
+        var cell1 = row.insertCell(0);
+        var cell2 = row.insertCell(1);
+        cell1.innerHTML=shoppingCar[x][1];
+        cell2.innerHTML=shoppingCar[x][0];
+
+
+        if(shoppingCar.length - x >= 2){
+            x++;
+            var cell1 = row.insertCell(0);
+            var cell2 = row.insertCell(1);
+            cell1.innerHTML=shoppingCar[x][1];
+            cell2.innerHTML=shoppingCar[x][0];
+
+        }
+
+
+    }
+
+    var row = purchaseOrderTable.insertRow(purchaseOrderTable.rows.length);
+    var cell1 = row.insertCell(0);
+    cell1.innerHTML="$"+finalPrice;
+    cell1.colSpan = "2";
+
 
 }
 
@@ -468,3 +563,14 @@ function showtableE() {
         tableADiv.style.display = "none";
     }
 }
+function showBigImageCover(item){
+    document.getElementById("bigImageCover").style.display = "block";
+    document.getElementById("bigImage").src = item.src;
+     console.log(item.src);
+}
+function hidBigImageCover(){
+    document.getElementById("bigImageCover").style.display = "none";
+    
+}
+
+
