@@ -22,16 +22,39 @@ var muneE = document.getElementById("muneE");
 
 
 /*  list= [[item1[name, price,imgsrc,type],item2,item3]   */
-var listA = [["老街口瓜子",'$2','./images/A/老街口瓜子.jpg',"A"], ["蟹黄味瓜子仁",'$5','./images/A/蟹黄味瓜子仁.jpg',"A"]];
+var listA = [["来伊份无核陈皮梅",'$2','./images/A/来伊份无核陈皮梅.png',"A"], ["黄飞红小虾麻辣花生",'$5','./images/A/黄飞红小虾麻辣花生.png',"A"], ["黄飞红麻辣花生",'$5','./images/A/黄飞红麻辣花生.png',"A"]];
 
 
 
-var listB = [["冰红茶",'$2','./images/B/冰红茶.png',"B"], ["加多宝",'$5','./images/B/加多宝.png',"B"], ["喜之郎CiCi葡萄味",'$3','./images/B/喜之郎CiCi葡萄味.png',"B"], ["康师傅绿茶",'$3','./images/B/康师傅绿茶.png',"B"]];
+var listB = [["劲仔厚豆干泡椒味",'$2','./images/B/劲仔厚豆干泡椒味.png',"B"], ["劲仔厚豆干香辣味",'$5','./images/B/劲仔厚豆干香辣味.png',"B"], ["劲仔厚豆干麻辣味",'$3','./images/B/劲仔厚豆干麻辣味.png',"B"], ["劲仔小鱼香辣味",'$3','./images/B/劲仔小鱼香辣味.png',"B"], ["北海道丸字蟹肉卷",'$3','./images/B/北海道丸字蟹肉卷.png',"B"], ["卫龙亲嘴豆皮",'$3','./images/B/卫龙亲嘴豆皮.png',"B"], ["卫龙麻辣土豆片",'$3','./images/B/卫龙麻辣土豆片.png',"B"], ["来伊份菇肉卷",'$3','./images/B/来伊份菇肉卷.png',"B"]];
 
+var listC = [["AD钙奶",'$2','./images/C/AD钙奶.png',"C"], 
+             ["东方树叶茉莉花茶",'$5','./images/C/东方树叶茉莉花茶.png',"C"], 
+             ["水溶C100",'$5','./images/C/水溶C100.png',"C"], 
+             ["爆摇烤香奶茶",'$5','./images/C/爆摇烤香奶茶.png',"C"], 
+             ["爆摇蜜香奶茶",'$5','./images/C/爆摇蜜香奶茶.png',"C"], 
+             ["爆摇阿萨姆奶茶",'$5','./images/C/爆摇阿萨姆奶茶.png',"C"], 
+             ["韩国DR.LIV低糖低卡蒟蒻果冻西柚味",'$5','./images/C/韩国DR.LIV低糖低卡蒟蒻果冻西柚味.png',"C"], 
+             ["韩国DR.LIV卡蒟蒻果冻芒果味",'$5','./images/C/韩国DR.LIV卡蒟蒻果冻芒果味.png',"C"], 
+             ["韩国DR.LIV蒟蒻果冻苹果味",'$5','./images/C/韩国DR.LIV蒟蒻果冻苹果味.png',"C"], 
+             ["香港兰芳园丝袜奶茶",'$5','./images/C/香港兰芳园丝袜奶茶.png',"C"]];
 
-var listC = [];
-var listD = [];
-var listE = [];
+var listD = [["日本果冻异果味",'$2','./images/D/日本果冻异果味.png',"D"], 
+             ["日本果冻梅子味",'$5','./images/D/日本果冻梅子味.png',"D"], 
+             ["日本果冻苹果味",'$5','./images/D/日本果冻苹果味.png',"D"], 
+             ["日本果冻葡萄味",'$5','./images/D/日本果冻葡萄味.png',"D"], 
+             ["日本果冻蜜桃味",'$5','./images/D/日本果冻蜜桃味.png',"D"], 
+             ["日本果冻青提味",'$5','./images/D/日本果冻青提味.png',"D"], 
+             ["江湖酸辣粉",'$5','./images/D/江湖酸辣粉.png',"D"], 
+             ["禛香肥牛大豆素肉",'$5','./images/D/禛香肥牛大豆素肉.png',"D"], 
+             ["食族人锡纸花甲粉",'$5','./images/D/食族人锡纸花甲粉.png',"D"], 
+             ["食族人麻辣爆肚粉",'$5','./images/D/食族人麻辣爆肚粉.png',"D"]];
+
+var listE = [["乐事墨西哥鸡汁番茄味",'$2','./images/E/乐事墨西哥鸡汁番茄味.png',"E"],
+             ["乐事黄金炒蟹味",'$2','./images/E/乐事黄金炒蟹味.png',"E"],
+             ["乐视意大利香浓红烩味",'$2','./images/E/乐视意大利香浓红烩味.png',"E"],
+             ["咪咪虾条",'$2','./images/E/咪咪虾条.png',"E"] ];
+
 
 var shoppingCar =[];
 var shoppingCarTable = document.getElementById("shoppingCarTable");
