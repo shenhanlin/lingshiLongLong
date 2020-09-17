@@ -370,8 +370,8 @@ function initShoppingCarTable(){
 
         console.log(shoppingCar[x]);
 
-console.log(parseInt(shoppingCar[x][2].slice(1, shoppingCar[x][2].length)));
-            finalPrice = finalPrice+(parseInt(shoppingCar[x][2].slice(1, shoppingCar[x][2].length)) * parseInt(shoppingCar[x][0]))+((parseInt(shoppingCar[x][2].slice(1, shoppingCar[x][2].length)) * parseInt(shoppingCar[x][0]))*0.08);
+        console.log(parseFloat(shoppingCar[x][2].slice(1, shoppingCar[x][2].length)));
+        finalPrice = finalPrice+(parseFloat(shoppingCar[x][2].slice(1, shoppingCar[x][2].length)) * parseFloat(shoppingCar[x][0]))+((parseFloat(shoppingCar[x][2].slice(1, shoppingCar[x][2].length)) * parseFloat(shoppingCar[x][0]))*0.08);
 
     }
 
